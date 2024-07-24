@@ -82,6 +82,8 @@ export class SdmActorSheet extends ActorSheet {
     // for (let [k, v] of Object.entries(context.system.abilities)) {
     //   v.label = game.i18n.localize(CONFIG.SDM.abilities[k]) ?? k;
     // }
+
+    context.system.attacks = context.actor.system.attacks;
   }
 
   /**
@@ -196,7 +198,7 @@ export class SdmActorSheet extends ActorSheet {
     // Get the type of item to create.
     const type = header.dataset.type;
     // Grab any data associated with this control.
-    const data = duplicate(header.dataset);
+    const data = foundry.utils.duplicate(header.dataset);
     // Initialize a default name.
     const name = `New ${type.capitalize()}`;
     // Prepare the item object.
@@ -233,7 +235,7 @@ export class SdmActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = `[${dataset.rolltype || 'ability'}] ${dataset.label || ''}`;
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),

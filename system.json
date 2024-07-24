@@ -23,7 +23,7 @@
   "version": "0.0.1",
   "compatibility": {
     "minimum": 12,
-    "verified": "12.328"
+    "verified": "12.329"
   },
   "esmodules": ["module/synthetic-dream-machine.mjs"],
   "styles": ["css/synthetic-dream-machine.css"],
@@ -40,6 +40,5 @@
   "manifest": "https://github.com/croese/fvtt-sdm/blob/main/system.json",
   "download": "This must link to a .zip file of the current version",
   "background": "systems/synthetic-dream-machine/assets/anvil-impact.png",
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power"
+  "primaryTokenAttribute": "health"
 }
