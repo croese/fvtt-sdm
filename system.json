@@ -40,5 +40,5 @@
   "manifest": "https://github.com/croese/fvtt-sdm/blob/main/system.json",
   "download": "This must link to a .zip file of the current version",
   "background": "systems/synthetic-dream-machine/assets/anvil-impact.png",
-  "primaryTokenAttribute": "health"
+  "primaryTokenAttribute": "life"
 }

@@ -12,7 +12,7 @@ export class SdmActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['synthetic-dream-machine', 'sheet', 'actor'],
-      width: 600,
+      width: 700,
       height: 600,
       tabs: [
         {

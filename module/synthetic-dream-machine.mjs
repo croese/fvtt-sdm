@@ -5,7 +5,7 @@ import { SdmItem } from './documents/item.mjs';
 import { SdmActorSheet } from './sheets/actor-sheet.mjs';
 import { SdmItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
-import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
+import { preloadHandlebarsTemplates, selectOptionsWithDisabled } from './helpers/templates.mjs';
 import { SDM } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
@@ -80,6 +80,10 @@ Hooks.once('init', function () {
 // If you need to add Handlebars helpers, here is a useful example:
 Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
+});
+
+Handlebars.registerHelper({
+  selectOptionsWithDisabled: selectOptionsWithDisabled,
 });
 
 /* -------------------------------------------- */
