@@ -8,7 +8,7 @@
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
       use both the "grid" and "grid-Ncol" class where "N" can be any number
       from 1 to 12 and will create that number of columns.  --}}
-      <div class="resources grid grid-5col">
+      <div class="resources grid grid-4col">
 
         {{!-- "flex-group-center" is also defined in the _grid.scss file
         and it will add a small amount of padding, a border, and will
@@ -51,14 +51,6 @@
           <input type="text" name="system.attributes.herodice.value" value="{{system.attributes.herodice.value}}" data-dtype="Number"/>
           </div>
         </div>
-
-        <div class="resource flex-group-center">
-          <label for="system.attributes.save.value" class="resource-label">Save</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.attributes.save.value" value="{{system.attributes.save.value}}" data-dtype="Number"/>
-          </div>
-        </div>
-
       </div>
     </div>
   </header>
@@ -78,6 +70,9 @@
 
     {{!-- Owned Traits Tab --}}
     <div class="tab traits" data-group="primary" data-tab="traits">
+
+
+
       <section class="grid grid-3col">
         <aside class="sidebar">
 
@@ -113,6 +108,21 @@
 
         {{!-- For the main traits list, span the right two columns --}}
         <section class="main grid-span-2">
+          <div class="resources grid grid-2col">
+            <div class="resource flex-group-center">
+            <label for="system.attributes.save.value" class="resource-label">Save</label>
+            <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="system.attributes.save.value" value="{{system.attributes.save.value}}" data-dtype="Number"/>
+            </div>
+          </div>
+
+          <div class="resource flex-group-center">
+            <label for="system.attributes.defense.value" class="resource-label">Defense</label>
+            <div class="resource-content flexrow flex-center flex-between">
+              <input type="text" name="system.attributes.defense.value" value="{{system.attributes.defense.value}}" data-dtype="Number"/>
+            </div>
+          </div>
+        </div>
           {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
           {{> "systems/synthetic-dream-machine/templates/actor/parts/actor-traits.hbs"}}
         </section>

@@ -35,6 +35,13 @@ export default class SdmCharacter extends SdmActorBase {
           min: 0,
         }),
       }),
+      defense: new fields.SchemaField({
+        value: new fields.NumberField({
+          ...requiredInteger,
+          initial: 0,
+          min: 0,
+        }),
+      }),
     });
 
     // Iterate over ability names and create a new SchemaField for each.
@@ -116,8 +123,8 @@ export default class SdmCharacter extends SdmActorBase {
       }
     }
 
-    data.lvl = this.attributes.level.value;
-    data.xp = this.attributes.experience.value;
+    data.defense = this.attributes.defense.value;
+    data.save = this.attributes.save.value;
 
     return data;
   }
