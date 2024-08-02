@@ -20,6 +20,14 @@
       "Spell": {
         "SpellLVL": "Level {level} Spells",
         "AddLVL": "Add LVL {level}"
+      },
+      "Trait": {
+        "Rank": {
+          "Label": "Rank",
+          "Skilled": "Skilled",
+          "Expert": "Expert",
+          "Master": "Master"
+        }
       }
     },
     "Effect": {

@@ -1,7 +1,8 @@
 import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
-} from '../helpers/effects.mjs';
+} from "../helpers/effects.mjs";
+import { SDM } from "../helpers/config.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -11,14 +12,14 @@ export class SdmActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ['synthetic-dream-machine', 'sheet', 'actor'],
+      classes: ["synthetic-dream-machine", "sheet", "actor"],
       width: 700,
       height: 600,
       tabs: [
         {
-          navSelector: '.sheet-tabs',
-          contentSelector: '.sheet-body',
-          initial: 'features',
+          navSelector: ".sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "features",
         },
       ],
     });
@@ -47,13 +48,13 @@ export class SdmActorSheet extends ActorSheet {
     context.flags = actorData.flags;
 
     // Prepare character data and items.
-    if (actorData.type == 'character') {
+    if (actorData.type == "character") {
       this._prepareItems(context);
       this._prepareCharacterData(context);
     }
 
     // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
+    if (actorData.type == "npc") {
       this._prepareItems(context);
     }
 
@@ -112,15 +113,19 @@ export class SdmActorSheet extends ActorSheet {
     for (let i of context.items) {
       i.img = i.img || Item.DEFAULT_ICON;
       // Append to gear.
-      if (i.type === 'item') {
+      if (i.type === "item") {
         gear.push(i);
       }
       // Append to features.
-      else if (i.type === 'feature') {
+      else if (i.type === "feature") {
+        const traitRank = SDM.TRAIT.TRAIT_RANK[i.system.rank];
+        i.rankDescription = `${game.i18n.localize(traitRank.label)} (+${
+          traitRank.bonus
+        })`;
         features.push(i);
       }
       // Append to spells.
-      else if (i.type === 'spell') {
+      else if (i.type === "spell") {
         if (i.system.spellLevel != undefined) {
           spells[i.system.spellLevel].push(i);
         }
@@ -140,9 +145,9 @@ export class SdmActorSheet extends ActorSheet {
     super.activateListeners(html);
 
     // Render the item sheet for viewing/editing prior to the editable check.
-    html.on('click', '.item-edit', (ev) => {
-      const li = $(ev.currentTarget).parents('.item');
-      const item = this.actor.items.get(li.data('itemId'));
+    html.on("click", ".item-edit", (ev) => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
     });
 
@@ -151,19 +156,19 @@ export class SdmActorSheet extends ActorSheet {
     if (!this.isEditable) return;
 
     // Add Inventory Item
-    html.on('click', '.item-create', this._onItemCreate.bind(this));
+    html.on("click", ".item-create", this._onItemCreate.bind(this));
 
     // Delete Inventory Item
-    html.on('click', '.item-delete', (ev) => {
-      const li = $(ev.currentTarget).parents('.item');
-      const item = this.actor.items.get(li.data('itemId'));
+    html.on("click", ".item-delete", (ev) => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
       item.delete();
       li.slideUp(200, () => this.render(false));
     });
 
     // Active Effect management
-    html.on('click', '.effect-control', (ev) => {
-      const row = ev.currentTarget.closest('li');
+    html.on("click", ".effect-control", (ev) => {
+      const row = ev.currentTarget.closest("li");
       const document =
         row.dataset.parentId === this.actor.id
           ? this.actor
@@ -172,15 +177,15 @@ export class SdmActorSheet extends ActorSheet {
     });
 
     // Rollable abilities.
-    html.on('click', '.rollable', this._onRoll.bind(this));
+    html.on("click", ".rollable", this._onRoll.bind(this));
 
     // Drag events for macros.
     if (this.actor.isOwner) {
       let handler = (ev) => this._onDragStart(ev);
-      html.find('li.item').each((i, li) => {
-        if (li.classList.contains('inventory-header')) return;
-        li.setAttribute('draggable', true);
-        li.addEventListener('dragstart', handler, false);
+      html.find("li.item").each((i, li) => {
+        if (li.classList.contains("inventory-header")) return;
+        li.setAttribute("draggable", true);
+        li.addEventListener("dragstart", handler, false);
       });
     }
   }
@@ -206,7 +211,7 @@ export class SdmActorSheet extends ActorSheet {
       system: data,
     };
     // Remove the type from the dataset since it's in the itemData.type prop.
-    delete itemData.system['type'];
+    delete itemData.system["type"];
 
     // Finally, create the item!
     return await Item.create(itemData, { parent: this.actor });
@@ -224,8 +229,8 @@ export class SdmActorSheet extends ActorSheet {
 
     // Handle item rolls.
     if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
+      if (dataset.rollType == "item") {
+        const itemId = element.closest(".item").dataset.itemId;
         const item = this.actor.items.get(itemId);
         if (item) return item.roll();
       }
@@ -233,12 +238,12 @@ export class SdmActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = `[${dataset.rolltype || 'ability'}] ${dataset.label || ''}`;
+      let label = `[${dataset.rolltype || "ability"}] ${dataset.label || ""}`;
       let roll = new Roll(dataset.roll, this.actor.getRollData());
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
         flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
+        rollMode: game.settings.get("core", "rollMode"),
       });
       return roll;
     }

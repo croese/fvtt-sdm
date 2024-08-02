@@ -54,6 +54,7 @@ export class SdmItemSheet extends ItemSheet {
 
     // Prepare active effects for easier access
     context.effects = prepareActiveEffectCategories(this.item.effects);
+    context.traitRanks = this._labelOptions(CONFIG.SDM.TRAIT.TRAIT_RANK);
 
     return context;
   }

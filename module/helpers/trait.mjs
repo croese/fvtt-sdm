@@ -1,17 +1,17 @@
 export const TRAIT_RANK = {
   skilled: {
     id: "skilled",
-    label: "SDM.Trait.Rank.Skilled",
+    label: "SDM.Item.Trait.Rank.Skilled",
     bonus: 3,
   },
   expert: {
     id: "expert",
-    label: "SDM.Trait.Rank.Expert",
+    label: "SDM.Item.Trait.Rank.Expert",
     bonus: 6,
   },
   master: {
     id: "master",
-    label: "SDM.Trait.Rank.Master",
+    label: "SDM.Item.Trait.Rank.Master",
     bonus: 9,
   },
 };

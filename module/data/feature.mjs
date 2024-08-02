@@ -18,14 +18,11 @@ export default class SdmFeature extends SdmItemBase {
 
     // schema.formula = new fields.StringField({ blank: true });
 
-    schema.rank = new fields.SchemaField({
-      value: new fields.NumberField({
-        ...requiredInteger,
-        initial: 1,
-        max: 3,
-        min: 1,
-      }),
-      label: new fields.StringField({ initial: "Skilled" }),
+    schema.rank = new fields.StringField({
+      required: true,
+      blank: false,
+      choices: CONFIG.SDM.TRAIT.TRAIT_RANK,
+      initial: CONFIG.SDM.TRAIT.TRAIT_RANK.skilled.id,
     });
 
     return schema;
@@ -35,14 +32,5 @@ export default class SdmFeature extends SdmItemBase {
     // Build the formula dynamically using string interpolation
     // const roll = this.roll;
     // this.formula = `${roll.diceNum}${roll.diceSize}${roll.diceBonus}`
-
-    const rankValue = this.rank.value;
-    if (rankValue === 1) {
-      this.rank.label = "Skilled";
-    } else if (rankValue === 2) {
-      this.rank.label = "Expert";
-    } else {
-      this.rank.label = "Master";
-    }
   }
 }
