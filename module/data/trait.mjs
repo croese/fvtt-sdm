@@ -1,6 +1,6 @@
 import SdmItemBase from "./item-base.mjs";
 
-export default class SdmFeature extends SdmItemBase {
+export default class SdmTrait extends SdmItemBase {
   static defineSchema() {
     const fields = foundry.data.fields;
     const requiredInteger = { required: true, nullable: false, integer: true };

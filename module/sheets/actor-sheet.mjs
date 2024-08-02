@@ -19,7 +19,7 @@ export class SdmActorSheet extends ActorSheet {
         {
           navSelector: ".sheet-tabs",
           contentSelector: ".sheet-body",
-          initial: "features",
+          initial: "traits",
         },
       ],
     });
@@ -95,7 +95,7 @@ export class SdmActorSheet extends ActorSheet {
   _prepareItems(context) {
     // Initialize containers.
     const gear = [];
-    const features = [];
+    const traits = [];
     const spells = {
       0: [],
       1: [],
@@ -116,13 +116,13 @@ export class SdmActorSheet extends ActorSheet {
       if (i.type === "item") {
         gear.push(i);
       }
-      // Append to features.
-      else if (i.type === "feature") {
+      // Append to traits.
+      else if (i.type === "trait") {
         const traitRank = SDM.TRAIT.TRAIT_RANK[i.system.rank];
         i.rankDescription = `${game.i18n.localize(traitRank.label)} (+${
           traitRank.bonus
         })`;
-        features.push(i);
+        traits.push(i);
       }
       // Append to spells.
       else if (i.type === "spell") {
@@ -134,7 +134,7 @@ export class SdmActorSheet extends ActorSheet {
 
     // Assign and return
     context.gear = gear;
-    context.features = features;
+    context.traits = traits;
     context.spells = spells;
   }
 

@@ -6,19 +6,28 @@
 export const preloadHandlebarsTemplates = async function () {
   return loadTemplates([
     // Actor partials.
-    'systems/synthetic-dream-machine/templates/actor/parts/actor-features.hbs',
-    'systems/synthetic-dream-machine/templates/actor/parts/actor-items.hbs',
-    'systems/synthetic-dream-machine/templates/actor/parts/actor-spells.hbs',
-    'systems/synthetic-dream-machine/templates/actor/parts/actor-effects.hbs',
+    "systems/synthetic-dream-machine/templates/actor/parts/actor-traits.hbs",
+    "systems/synthetic-dream-machine/templates/actor/parts/actor-items.hbs",
+    "systems/synthetic-dream-machine/templates/actor/parts/actor-spells.hbs",
+    "systems/synthetic-dream-machine/templates/actor/parts/actor-effects.hbs",
     // Item partials
-    'systems/synthetic-dream-machine/templates/item/parts/item-effects.hbs',
+    "systems/synthetic-dream-machine/templates/item/parts/item-effects.hbs",
   ]);
 };
 
-
 export function selectOptionsWithDisabled(choices, options) {
-  let { localize = false, selected = null, blank = null, sort = false, nameAttr, labelAttr, inverted, disabled = null } = options.hash;
-  selected = selected instanceof Array ? selected.map(String) : [String(selected)];
+  let {
+    localize = false,
+    selected = null,
+    blank = null,
+    sort = false,
+    nameAttr,
+    labelAttr,
+    inverted,
+    disabled = null,
+  } = options.hash;
+  selected =
+    selected instanceof Array ? selected.map(String) : [String(selected)];
   disabled = disabled ?? {};
 
   // Prepare the choices as an array of objects
@@ -30,8 +39,7 @@ export function selectOptionsWithDisabled(choices, options) {
       if (localize) label = game.i18n.localize(label);
       selectOptions.push({ name, label });
     }
-  }
-  else {
+  } else {
     for (const choice of Object.entries(choices)) {
       const [key, value] = inverted ? choice.reverse() : choice;
       const name = String(nameAttr ? value[nameAttr] : key);
@@ -55,8 +63,13 @@ export function selectOptionsWithDisabled(choices, options) {
   for (const option of selectOptions) {
     const label = Handlebars.escapeExpression(option.label);
     const isSelected = selected.includes(option.name);
-    const disabledText = disabled[option.name] != undefined ? game.i18n.localize(disabled[option.name]) : "";
-    html += `<option value="${option.name}" ${isSelected ? "selected" : ""} ${disabledText ? "disabled" : ""}>${label}${disabledText}</option>`;
+    const disabledText =
+      disabled[option.name] != undefined
+        ? game.i18n.localize(disabled[option.name])
+        : "";
+    html += `<option value="${option.name}" ${isSelected ? "selected" : ""} ${
+      disabledText ? "disabled" : ""
+    }>${label}${disabledText}</option>`;
   }
   return new Handlebars.SafeString(html);
 }
