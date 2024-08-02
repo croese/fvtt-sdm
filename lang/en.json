@@ -1,14 +1,12 @@
 {
   "SDM": {
-    "Ability": {
+    "Character": {
       "Str": { "long": "Strength", "abbr": "str" },
       "End": { "long": "Endurance", "abbr": "end" },
       "Agi": { "long": "Agility", "abbr": "agi" },
       "Tho": { "long": "Thought", "abbr": "tho" },
       "Aur": { "long": "Aura", "abbr": "aur" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
-    },
-    "Attack": {
+      "Cha": { "long": "Charisma", "abbr": "cha" },
       "Mel": { "long": "Melee", "abbr": "mel" },
       "Ran": { "long": "Ranged", "abbr": "ran" },
       "Old": { "long": "Oldtech", "abbr": "old" },

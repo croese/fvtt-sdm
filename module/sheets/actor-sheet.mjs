@@ -82,8 +82,6 @@ export class SdmActorSheet extends ActorSheet {
     // for (let [k, v] of Object.entries(context.system.abilities)) {
     //   v.label = game.i18n.localize(CONFIG.SDM.abilities[k]) ?? k;
     // }
-
-    context.system.attacks = context.actor.system.attacks;
   }
 
   /**

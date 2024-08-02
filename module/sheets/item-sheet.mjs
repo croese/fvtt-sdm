@@ -1,7 +1,7 @@
 import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
-} from '../helpers/effects.mjs';
+} from "../helpers/effects.mjs";
 
 /**
  * Extend the basic ItemSheet with some very simple modifications
@@ -11,14 +11,14 @@ export class SdmItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: ['synthetic-dream-machine', 'sheet', 'item'],
+      classes: ["synthetic-dream-machine", "sheet", "item"],
       width: 520,
       height: 480,
       tabs: [
         {
-          navSelector: '.sheet-tabs',
-          contentSelector: '.sheet-body',
-          initial: 'description',
+          navSelector: ".sheet-tabs",
+          contentSelector: ".sheet-body",
+          initial: "description",
         },
       ],
     });
@@ -26,7 +26,7 @@ export class SdmItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = 'systems/synthetic-dream-machine/templates/item';
+    const path = "systems/synthetic-dream-machine/templates/item";
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.hbs`;
 
@@ -70,8 +70,16 @@ export class SdmItemSheet extends ItemSheet {
     // Roll handlers, click handlers, etc. would go here.
 
     // Active Effect management
-    html.on('click', '.effect-control', (ev) =>
+    html.on("click", ".effect-control", (ev) =>
       onManageActiveEffect(ev, this.item)
     );
+  }
+
+  _labelOptions(categories) {
+    const returnObject = Object.keys(categories).reduce((result, key) => {
+      result[key] = categories[key].label;
+      return result;
+    }, {});
+    return returnObject;
   }
 }
