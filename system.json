@@ -38,7 +38,7 @@
   "packFolders": [],
   "socket": false,
   "manifest": "https://github.com/croese/fvtt-sdm/blob/main/system.json",
-  "download": "This must link to a .zip file of the current version",
+  "download": "https://github.com/croese/fvtt-sdm/archive/refs/heads/main.zip",
   "background": "systems/synthetic-dream-machine/assets/anvil-impact.png",
   "primaryTokenAttribute": "life"
 }
