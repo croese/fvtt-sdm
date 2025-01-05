@@ -21,3 +21,16 @@ SDM.abilityAbbreviations = {
   aur: 'SDM.Ability.Aur.abbr',
   tho: 'SDM.Ability.Tho.abbr',
 };
+
+SDM.skillRankModifiers = {
+  Skilled: 3,
+  Expert: 6,
+  Master: 9
+};
+
+SDM.attackTypes = {
+  mel: { ability: 'str', labelKey: 'SDM.Attack.Melee' },
+  ran: { ability: 'agi', labelKey: 'SDM.Attack.Ranged' },
+  fan: { ability: 'cha', labelKey: 'SDM.Attack.Fantascience' },
+  old: { ability: 'tho', labelKey: 'SDM.Attack.Oldtech' }
+}

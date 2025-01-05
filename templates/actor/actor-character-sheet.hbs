@@ -1,5 +1,6 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
 
+  {{ log this }}
   {{!-- Sheet Header --}}
   <header class="sheet-header">
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
@@ -64,9 +65,7 @@
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
           <div class="abilities flexcol">
-            {{ log system.abilities }}
             {{#each system.abilities as |ability key|}}
-            {{ log ability key }}
             <div class="ability flexrow flex-group-center">
               {{!-- <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label> --}}
               <label for="system.abilities.{{key}}.value" 
@@ -74,13 +73,31 @@
                      data-roll="d20+@abilities.{{key}}.value" 
                      data-label="{{localize (lookup @root.config.abilities key)}}"
                      title="{{localize (lookup @root.config.abilities key)}}">
-                      {{localize (lookup @root.config.abilities key)}}
+                      {{localize (lookup @root.config.abilities key)}} ({{ key }})
               </label>
               <input type="text" 
                      name="system.abilities.{{key}}.value" 
                      value="{{ability.value}}" 
                      data-dtype="Number"/>
               {{!-- <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span> --}}
+            </div>
+            {{/each}}
+          </div>
+          <hr />
+          <div class="attacks flexcol">
+            {{#each system.attacks as |attack key|}}
+            <div class="attack flexrow flex-group-center">
+              <label for="system.attacks.{{key}}.value" 
+                     class="resource-label rollable flexlarge align-left" 
+                     data-roll="d20+@attacks.{{key}}.value" 
+                     data-label="{{ label }}"
+                     title="{{ label }}">
+                      {{ label }} ({{ key }})
+              </label>
+              <input type="text" 
+                     name="system.attacks.{{key}}.value" 
+                     value="{{attack.value}}" 
+                     data-dtype="Number"/>
             </div>
             {{/each}}
           </div>

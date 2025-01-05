@@ -9,10 +9,10 @@
       "Tho": { "long": "Thought", "abbr": "tho" }
     },
     "Attack": {
-      "Melee": { "long": "Melee" },
-      "Ranged": { "long": "Ranged" },
-      "Fantascience": { "long": "Fantascience" },
-      "Oldtech": { "long": "Oldtech" }
+      "Melee": "Melee",
+      "Ranged": "Ranged",
+      "Fantascience": "Fantascience" ,
+      "Oldtech": "Oldtech"
     },
     "SheetLabels": {
       "Actor": "SDM Actor Sheet",

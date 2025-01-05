@@ -11,7 +11,8 @@ export default class SDMCharacter extends SDMActorBase {
       level: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 1, max: 9 })
       }),
-      xp: new fields.NumberField({ ...requiredInteger, initial: 300, min: 0, max: 99999 })
+      xp: new fields.NumberField({ ...requiredInteger, initial: 300, min: 0, max: 99999 }),
+      save: new fields.NumberField({ ...requiredInteger, initial: 13, min: 0 })
     });
 
     // Iterate over ability names and create a new SchemaField for each.
@@ -35,16 +36,30 @@ export default class SDMCharacter extends SDMActorBase {
       // Handle ability label localization.
       this.abilities[key].label = game.i18n.localize(CONFIG.SDM.abilities[key]) ?? key;
     }
+
+    this.attacks = {};
+    for(let [k,v] of Object.entries(CONFIG.SDM.attackTypes)) {
+      this.attacks[k] = {
+        label: game.i18n.localize(v.labelKey) ?? k,
+        value: this.abilities[v.ability].value
+      };
+    }
   }
 
   getRollData() {
     const data = {};
 
     // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
+    // formulas like `@str + 4`.
     if (this.abilities) {
       for (let [k,v] of Object.entries(this.abilities)) {
-        data[k] = foundry.utils.deepClone(v);
+        data[k] = v.value;
+      }
+    }
+
+    if(this.attacks) {
+      for (let [k,v] of Object.entries(this.attacks)) {
+        data[k] = v.value;
       }
     }
 
