@@ -6,18 +6,18 @@ export const SDM = {};
  */
 SDM.abilities = {
   str: 'SDM.Ability.Str.long',
-  dex: 'SDM.Ability.Dex.long',
-  con: 'SDM.Ability.Con.long',
-  int: 'SDM.Ability.Int.long',
-  wis: 'SDM.Ability.Wis.long',
+  end: 'SDM.Ability.End.long',
+  agi: 'SDM.Ability.Agi.long',
   cha: 'SDM.Ability.Cha.long',
+  aur: 'SDM.Ability.Aur.long',
+  tho: 'SDM.Ability.Tho.long',
 };
 
 SDM.abilityAbbreviations = {
   str: 'SDM.Ability.Str.abbr',
-  dex: 'SDM.Ability.Dex.abbr',
-  con: 'SDM.Ability.Con.abbr',
-  int: 'SDM.Ability.Int.abbr',
-  wis: 'SDM.Ability.Wis.abbr',
+  end: 'SDM.Ability.End.abbr',
+  agi: 'SDM.Ability.Agi.abbr',
   cha: 'SDM.Ability.Cha.abbr',
+  aur: 'SDM.Ability.Aur.abbr',
+  tho: 'SDM.Ability.Tho.abbr',
 };

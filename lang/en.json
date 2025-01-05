@@ -2,11 +2,17 @@
   "SDM": {
     "Ability": {
       "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "End": { "long": "Endurance", "abbr": "end" },
+      "Agi": { "long": "Agility", "abbr": "agi" },
+      "Cha": { "long": "Charisma", "abbr": "cha" },
+      "Aur": { "long": "Aura", "abbr": "aur" },
+      "Tho": { "long": "Thought", "abbr": "tho" }
+    },
+    "Attack": {
+      "Melee": { "long": "Melee" },
+      "Ranged": { "long": "Ranged" },
+      "Fantascience": { "long": "Fantascience" },
+      "Oldtech": { "long": "Oldtech" }
     },
     "SheetLabels": {
       "Actor": "SDM Actor Sheet",
@@ -24,6 +30,11 @@
       "Temporary": "Temporary Effects",
       "Passive": "Passive Effects",
       "Inactive": "Inactive Effects"
+    },
+    "SkillRanks": {
+      "Skilled": "Skilled",
+      "Expert": "Expert",
+      "Master": "Master"
     }
   },
 

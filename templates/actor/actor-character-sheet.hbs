@@ -14,11 +14,11 @@
         and it will add a small amount of padding, a border, and will
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
-          <label for="system.health.value" class="resource-label">Health</label>
+          <label for="system.life.value" class="resource-label">Life</label>
           <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
+          <input type="text" name="system.life.value" value="{{system.life.value}}" data-dtype="Number"/>
           <span> / </span>
-          <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
+          <input type="text" name="system.life.max" value="{{system.life.max}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -64,11 +64,23 @@
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
           <div class="abilities flexcol">
+            {{ log system.abilities }}
             {{#each system.abilities as |ability key|}}
+            {{ log ability key }}
             <div class="ability flexrow flex-group-center">
-              <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
-              <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              {{!-- <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label> --}}
+              <label for="system.abilities.{{key}}.value" 
+                     class="resource-label rollable flexlarge align-left" 
+                     data-roll="d20+@abilities.{{key}}.value" 
+                     data-label="{{localize (lookup @root.config.abilities key)}}"
+                     title="{{localize (lookup @root.config.abilities key)}}">
+                      {{localize (lookup @root.config.abilities key)}}
+              </label>
+              <input type="text" 
+                     name="system.abilities.{{key}}.value" 
+                     value="{{ability.value}}" 
+                     data-dtype="Number"/>
+              {{!-- <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span> --}}
             </div>
             {{/each}}
           </div>
@@ -81,6 +93,47 @@
         </section>
 
       </section>
+
+      <table>
+        <thead>
+          <tr>
+            <td>Level</td>
+            <td>Experience</td>
+            <td>Life</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>0</td><td>0</td><td>4</td>
+            </tr
+            ><tr>
+              <td>1</td><td>300</td><td>8</td>
+            </tr>
+            <tr>
+              <td>2</td><td>750</td><td>12</td>
+            </tr>
+            <tr>
+              <td>3</td><td>1,500</td><td>16</td>
+            </tr>
+            <tr>
+              <td>4</td><td>3,000</td><td>20</td>
+            </tr>
+            <tr>
+              <td>5</td><td>6,000</td><td>24</td>
+            </tr>
+            <tr>
+              <td>6</td><td>12,500</td><td>28</td>
+            </tr>
+              <tr><td>7</td><td>25,000</td><td>32</td>
+            </tr>
+            <tr>
+              <td>8</td><td>50,000</td><td>36</td>
+            </tr>
+            <tr>
+              <td>9</td><td>99,999</td><td>40</td>
+            </tr>
+          </tbody>
+        </table>
     </div>
 
     {{!-- Biography Tab --}}

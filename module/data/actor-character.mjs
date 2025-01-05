@@ -9,14 +9,15 @@ export default class SDMCharacter extends SDMActorBase {
 
     schema.attributes = new fields.SchemaField({
       level: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 1 })
+        value: new fields.NumberField({ ...requiredInteger, initial: 1, max: 9 })
       }),
+      xp: new fields.NumberField({ ...requiredInteger, initial: 300, min: 0, max: 99999 })
     });
 
     // Iterate over ability names and create a new SchemaField for each.
     schema.abilities = new fields.SchemaField(Object.keys(CONFIG.SDM.abilities).reduce((obj, ability) => {
       obj[ability] = new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 5 }),
       });
       return obj;
     }, {}));
@@ -25,10 +26,12 @@ export default class SDMCharacter extends SDMActorBase {
   }
 
   prepareDerivedData() {
+    console.log('prepareDerivedData', this);
+
     // Loop through ability scores, and add their modifiers to our sheet output.
     for (const key in this.abilities) {
       // Calculate the modifier using d20 rules.
-      this.abilities[key].mod = Math.floor((this.abilities[key].value - 10) / 2);
+      // this.abilities[key].mod = Math.floor((this.abilities[key].value - 10) / 2);
       // Handle ability label localization.
       this.abilities[key].label = game.i18n.localize(CONFIG.SDM.abilities[key]) ?? key;
     }
@@ -47,6 +50,8 @@ export default class SDMCharacter extends SDMActorBase {
 
     data.lvl = this.attributes.level.value;
 
-    return data
+    console.log('getRollData', this, data);
+
+    return data;
   }
 }
