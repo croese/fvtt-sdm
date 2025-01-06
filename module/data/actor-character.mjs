@@ -8,11 +8,11 @@ export default class SDMCharacter extends SDMActorBase {
     const schema = super.defineSchema();
 
     schema.attributes = new fields.SchemaField({
-      level: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 1, max: 9 })
-      }),
+      level: new fields.NumberField({ ...requiredInteger, initial: 1, max: 9 }),
       xp: new fields.NumberField({ ...requiredInteger, initial: 300, min: 0, max: 99999 }),
-      save: new fields.NumberField({ ...requiredInteger, initial: 13, min: 0 })
+      save: new fields.NumberField({ ...requiredInteger, initial: 13, min: 0 }),
+      defense: new fields.NumberField({ ...requiredInteger, initial: 7, min: 0 }),
+      heroDice: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
     });
 
     // Iterate over ability names and create a new SchemaField for each.
@@ -22,6 +22,16 @@ export default class SDMCharacter extends SDMActorBase {
       });
       return obj;
     }, {}));
+
+    schema.looks = new fields.StringField({ required: true, blank: true });
+    schema.likes = new fields.StringField({ required: true, blank: true });
+    schema.friends = new fields.StringField({ required: true, blank: true });
+    schema.foes = new fields.StringField({ required: true, blank: true });
+
+    schema.revenuePerWeek = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.expensesPerWeek = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.wealth = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+    schema.debt = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
 
     return schema;
   }
@@ -63,9 +73,8 @@ export default class SDMCharacter extends SDMActorBase {
       }
     }
 
-    data.lvl = this.attributes.level.value;
-
-    console.log('getRollData', this, data);
+    data.lvl = this.attributes.level;
+    data.defense = this.attributes.defense;
 
     return data;
   }

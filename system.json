@@ -36,8 +36,8 @@
   ],
   "documentTypes": {
     "Actor": {
-      "character": { "htmlFields": ["biography"] },
-      "npc": { "htmlFields": ["biography"] }
+      "character": { },
+      "npc": { }
     },
     "Item": {
       "item": {},
