@@ -1,0 +1,29 @@
+:root {
+  --synthetic-dream-machine-c-dark: #191813;
+  --synthetic-dream-machine-c-faint: #c9c7b8;
+  --synthetic-dream-machine-c-beige: #b5b3a4;
+  --synthetic-dream-machine-c-tan: #444444;
+  --synthetic-dream-machine-c-white: #ffffff;
+  --synthetic-dream-machine-c-black: #000000;
+  --synthetic-dream-machine-c-groove: #eeede0;
+}
+
+.theme-dark {
+  --synthetic-dream-machine-c-dark: #c9c7b8;
+  --synthetic-dream-machine-c-faint: #191813;
+  --synthetic-dream-machine-c-beige: #444444;
+  --synthetic-dream-machine-c-tan: #b5b3a4;
+  --synthetic-dream-machine-c-white: #000000;
+  --synthetic-dream-machine-c-black: #ffffff;
+  --synthetic-dream-machine-c-groove: #11121f;
+}
+
+$c-white: var(--synthetic-dream-machine-c-white);
+$c-black: var(--synthetic-dream-machine-c-black);
+
+$c-dark: var(--synthetic-dream-machine-c-dark);
+$c-faint: var(--synthetic-dream-machine-c-faint);
+$c-beige: var(--synthetic-dream-machine-c-beige);
+$c-tan: var(--synthetic-dream-machine-c-tan);
+
+$c-groove: var(--synthetic-dream-machine-c-groove);
