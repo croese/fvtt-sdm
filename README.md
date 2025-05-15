@@ -1,11 +1,11 @@
 # Sdm System
 
-![Foundry v11](https://img.shields.io/badge/foundry-v11-green) ![Foundry v12](https://img.shields.io/badge/foundry-v12-green)
+![Foundry v11](https://img.shields.io/badge/foundry-v11-green) ![Foundry v12](https://img.shields.io/badge/foundry-v12-green) ![Foundry v13](https://img.shields.io/badge/foundry-v13-green)
 
 This system is a synthetic-dream-machine system that you can use as a starting point for building your own custom systems. It's similar to Simple World-building, but has examples of creating attributes in code rather than dynamically through the UI.
 
 > **Tutorial Updates are WIP**
-> 
+>
 > The v12 branch of Sdm has switched to using Foundry's ApplicationV2 version of document sheets, and the updates for the accompanying tutorial on the wiki are still in progress. Feel free to use this version of the system, but you'll need to use the comments within the actor and item sheet classes for context on what's happening vs. reading the tutorial.
 
 ## Usage
@@ -23,7 +23,7 @@ Regardless of which method you choose, think carefully about your system's name.
 This system includes a generator CLI in `package.json`. To use it, you must have [node.js](https://nodejs.org) installed, and it's recommended that you install node 20 or later.
 
 > **Python Generator**
-> 
+>
 > If you would rather use Python than node, there’s an excellent Python-based generator created by Cussa at https://github.com/Cussa/fvtt-synthetic-dream-machine-initializator. Give it a shot!
 
 Once you have npm installed, you can run the following in your terminal or command prompt:
