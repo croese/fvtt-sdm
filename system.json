@@ -47,7 +47,7 @@
       "thumbnail": "systems/synthetic-dream-machine/assets/anvil-impact.png"
     }
   ],
-  "version": "3.0.0",
+  "version": "0.0.1",
   "compatibility": {
     "minimum": "13.339",
     "verified": "13.342"
@@ -64,7 +64,7 @@
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "https://github.com/croese/fvtt-sdm/blob/main/system.json",
+  "manifest": "https://raw.githubusercontent.com/croese/fvtt-sdm/refs/heads/main/system.json",
   "download": "https://github.com/croese/fvtt-sdm/archive/refs/heads/main.zip",
   "background": "systems/synthetic-dream-machine/assets/anvil-impact.png",
   "grid": {
