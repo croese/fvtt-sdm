@@ -19,7 +19,7 @@ export default class SdmActorBase extends foundry.abstract
       value: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 }),
       max: new fields.NumberField({ ...requiredInteger, initial: 5 }),
     });
-    schema.biography = new fields.HTMLField();
+    schema.notes = new fields.HTMLField();
 
     return schema;
   }

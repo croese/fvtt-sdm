@@ -44,8 +44,8 @@ export class SdmActorSheet extends api.HandlebarsApplicationMixin(
       template: 'systems/synthetic-dream-machine/templates/actor/features.hbs',
       scrollable: [""],
     },
-    biography: {
-      template: 'systems/synthetic-dream-machine/templates/actor/biography.hbs',
+    notes: {
+      template: 'systems/synthetic-dream-machine/templates/actor/notes.hbs',
       scrollable: [""],
     },
     gear: {
@@ -66,7 +66,7 @@ export class SdmActorSheet extends api.HandlebarsApplicationMixin(
   _configureRenderOptions(options) {
     super._configureRenderOptions(options);
     // Not all parts always render
-    options.parts = ['header', 'tabs', 'biography'];
+    options.parts = ['header', 'tabs', 'notes'];
     // Don't show the other tabs if only limited view
     if (this.document.limited) return;
     // Control which parts show based on document subtype
@@ -117,12 +117,12 @@ export class SdmActorSheet extends api.HandlebarsApplicationMixin(
       case 'gear':
         context.tab = context.tabs[partId];
         break;
-      case 'biography':
+      case 'notes':
         context.tab = context.tabs[partId];
-        // Enrich biography info for display
+        // Enrich notes info for display
         // Enrichment turns text like `[[/r 1d20]]` into buttons
-        context.enrichedBiography = await TextEditor.enrichHTML(
-          this.actor.system.biography,
+        context.enrichedNotes = await TextEditor.enrichHTML(
+          this.actor.system.notes,
           {
             // Whether to show secret blocks in the finished html
             secrets: this.document.isOwner,
@@ -156,7 +156,7 @@ export class SdmActorSheet extends api.HandlebarsApplicationMixin(
     // If you have sub-tabs this is necessary to change
     const tabGroup = 'primary';
     // Default tab for first time it's rendered this session
-    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'biography';
+    if (!this.tabGroups[tabGroup]) this.tabGroups[tabGroup] = 'notes';
     return parts.reduce((tabs, partId) => {
       const tab = {
         cssClass: '',
@@ -172,9 +172,9 @@ export class SdmActorSheet extends api.HandlebarsApplicationMixin(
         case 'header':
         case 'tabs':
           return tabs;
-        case 'biography':
-          tab.id = 'biography';
-          tab.label += 'Biography';
+        case 'notes':
+          tab.id = 'notes';
+          tab.label += 'Notes';
           break;
         case 'features':
           tab.id = 'features';

@@ -253,12 +253,12 @@
   height: 100%;
 }
 .synthetic-dream-machine .tab {
-  max-height: 380px;
+  max-height: 400px;
 }
-.synthetic-dream-machine .tab.biography {
+.synthetic-dream-machine .tab.notes {
   flex: 1;
 }
-.synthetic-dream-machine .tab.biography .editor {
+.synthetic-dream-machine .tab.notes .editor {
   height: 100%;
 }
 .synthetic-dream-machine .tox .tox-editor-container {
@@ -489,4 +489,4 @@
 }
 .synthetic-dream-machine .effects .item .effect-controls {
   border: none;
-}/*# sourceMappingURL=synthetic-dream-machine.css.map */
+}

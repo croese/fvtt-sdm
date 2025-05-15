@@ -14,7 +14,7 @@
     },
     "Actor": {
       "Tabs": {
-        "Biography": "Biography",
+        "Notes": "Notes",
         "Features": "Features",
         "Gear": "Gear",
         "Spells": "Spells",
@@ -22,7 +22,7 @@
       },
       "base": {
         "FIELDS": {
-          "biography": {"label": "Biography"},
+          "notes": {"label": "Notes"},
           "health": {
             "value": {"label": "Health"},
             "max": {"label": "Maximum Health"}
